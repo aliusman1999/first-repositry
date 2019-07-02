@@ -27,7 +27,7 @@
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
-    padding:10px 114px;
+    padding:10px 70px;
     
    display:block;
   }
@@ -40,16 +40,17 @@
     background-color: #4d4e4d;
   }
   .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
+  
+    width: 160px;
+    position: absolute;
     z-index: 1;
-    top: 30px;
+    
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   
   .sidenav a {
@@ -58,23 +59,29 @@
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s;
+    
   }
   
   .sidenav a:hover {
     color: #f1f1f1;
   }
   
-  .sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
   
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
     
+  }
+  #canvas{
+    background:white;
+    margin-left:170px;
+    border: 2px solid black;
+    
+    width:800px;
+    height:400px;
+
+  }
+  .log{
+    margin-left:170px;
+    width:90.3%;
   }
