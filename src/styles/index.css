@@ -1,5 +1,8 @@
 
- #debugDiv { border: 1px solid #333}
+ #debugDiv { 
+  overflow:auto;
+  height:100px; 
+  border: 1px solid #333}
 #b4{
   background:rgb(145, 228, 221);
 }
@@ -44,7 +47,7 @@
     width: 160px;
     position: absolute;
     z-index: 1;
-    
+    top:0px;
     left: 0;
     background-color: #111;
     overflow-x: hidden;
@@ -74,14 +77,12 @@
   }
   #canvas{
     background:white;
-    margin-left:170px;
+    margin-left: 5px;
     border: 2px solid black;
     
     width:800px;
     height:400px;
 
   }
-  .log{
-    margin-left:170px;
-    width:90.3%;
-  }
+  
+  .a{margin-left:160px}

@@ -4,61 +4,50 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { inherits } from 'util';
 import { NONAME } from 'dns';
+import { listenerCount } from 'cluster';
 
-
-
- 
- // create a wrapper around native canvas element (with id="c")
- $('#can').click(function(){ 
-  $(document).ready(function init(){
- 
-    canvas.setHeight(500);
-    canvas.setWidth(800);
-    $('canvas').bind("click",obj.test);
-  });
- var canvas = new fabric.Canvas('canvas');
-// create a rectangle object
-var c1;
-var c2;
-class Circle1{
-  s(l,t,c,f,wi,ra){
-    var circle  = new fabric.Circle({
-      left: l,
-      top: t,
-      stroke:c,
-      fill:f,
-      
-      strokeWidth:wi,
-      radius:ra,});
-      canvas.add(circle);
-      
-      return circle;
-  }
-  test(){
-    
-    c2.set('fill','red');
-    console.log("ali");
-
-c1.set('fill','blue');
-canvas.add();
-
-  }
+class MyCircle extends fabric.Circle { 
+ constructor(){
+    super({
+     left:(Math.random()*((750-1)+1))+1,
+     top:(Math.random()*((450-1)+1))+1,
+     radius: (Math.random() * 10) + 10,
+     fill:"#" + Math.random().toString(10).slice(2, 8),
+    });
+   this.x = 2;
+   this.direction=[1,1];
+  } // end of constructor
 }
- let obj=new Circle1();
-  c2=obj.s(200,200,'black','green',3,20);
-  c1=obj.s(200,100,'black','green',2,20);
- 
- 
 
+var canvas = new fabric.Canvas('canvas');
 
+$('#can').click(function() {
+  canvas.setHeight(500);
+  canvas.setWidth(800);
+  canvas.clear();
+  var obj=new MyCircle();
+  canvas.add(obj);
+  console.log(obj);
+  animate(obj);
+});
 
- 
+function animate(obj) {
+  obj.left += obj.x * obj.direction[0];
+  obj.top += obj.x * obj.direction[1];
+  canvas.renderAll();
+  
+  if (obj.left <= 0) {
+   obj.direction[0] = 1;
+  }
 
-
- });
-
-
-
-
- 
-
+  if ((obj.left + 2 * obj.radius) >= canvas.getWidth()) {
+   obj.direction[0] = -1;
+  }
+  if (obj.top <= 0) {
+   obj.direction[1] = 1;
+  }
+  if ((obj.top + 2 * obj.radius) >= canvas.getHeight()) {
+   obj.direction[1]=-1;
+  }
+  fabric.util.requestAnimFrame(function(){animate(obj)});
+}

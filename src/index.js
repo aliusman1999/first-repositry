@@ -26,7 +26,7 @@ $(document).ready();
    console.olog(message);
    $('#debugDiv').append( '<p>'+ message + '<p>' );
    };
-console.log("hello in")
+
 
 
 //for 2d menu
