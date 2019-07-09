@@ -27,7 +27,6 @@ $('#can').click(function() {
   canvas.clear();
   var obj=new MyCircle();
   canvas.add(obj);
-  console.log(obj);
   animate(obj);
 });
 
@@ -35,11 +34,9 @@ function animate(obj) {
   obj.left += obj.x * obj.direction[0];
   obj.top += obj.x * obj.direction[1];
   canvas.renderAll();
-  
   if (obj.left <= 0) {
    obj.direction[0] = 1;
   }
-
   if ((obj.left + 2 * obj.radius) >= canvas.getWidth()) {
    obj.direction[0] = -1;
   }
