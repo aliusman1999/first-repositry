@@ -1,88 +1,79 @@
 #my-img{display:none;}
- #debugDiv { 
+
+#debugDiv { 
   overflow:auto;
   height:100px; 
-  border: 1px solid #333}
-#b4{
+  border: 1px solid #333
+}
+
+#footer{
   background:rgb(145, 228, 221);
 }
+
 .btn-group .button {
     background-color: rgb(142, 165, 142); 
     border: 1px solid rgba(119, 143, 138, 0.514);
     color: white;
-
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    
-  }
-  .btn-group .button:hover {
-    background-color: #444b45;
-  }
-  .btn-group1 .button {
-    background-color: rgb(122, 139, 123); /* Green */
-    border: 1px solid rgb(7, 7, 7);
-    color: white;
-   
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    padding:10px 70px;
-    
-   display:block;
-  }
-  
-  .btn-group1 .button:not(:last-child) {
-    border-bottom: none; /* Prevent double borders */
-  }
-  
-  .btn-group1 .button:hover {
-    background-color: #4d4e4d;
-  }
-  .sidenav {
-  
-    width: 160px;
-    position: absolute;
-    z-index: 1;
-    top:0px;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-    
-  }
-  #canvas{
-    background:white;
-    margin-left: 5px;
-    border: 2px solid black;
-    
-    width:800px;
-    height:400px;
+}
 
-  }
+.btn-group .button:hover {
+  background-color: #444b45;
+}
+
+.btn-group1 .button {
+  background-color: rgb(122, 139, 123); /* Green */
+  border: 1px solid rgb(7, 7, 7);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding:10px 70px;
+  display:block;
+}
+
+.btn-group1 .button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
   
-  .a{margin-left:160px}
+.btn-group1 .button:hover {
+  background-color: #4d4e4d;
+}
+
+.sidenav {
+  width: 160px;
+  position: absolute;
+  z-index: 1;
+  top:0px;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+  
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+#canvas{
+  background: white;
+  border: 2px solid black;
+  width:800px;
+  height:400px;
+}
+
+.mainFrame{margin-left:160px}

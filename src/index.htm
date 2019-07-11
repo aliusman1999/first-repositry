@@ -1,69 +1,51 @@
 ﻿<!DOCTYPE html>
 <html>
-  
 <body>
-   
-        
-                
-                <div class="a" style="background:skyblue" >
-                  <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-light navbar-static-top">
-                    <div class="container-fluid "style="background:royalblue">
-                      
-                      <a class="navbar-brand" href="#">Project</a>
-                    
-                    <button type="button" class="navbar-toggler"
-                    data-toggle="collapse" data-target=".navbar-collapse"
-                    >
-                    <span class="navbar-toggler-icon"></span>
-                    
-                      
-                    </button>
-                    
-                    <div class="navbar-collapse collapse"> 
-                      <ul class="nav navbar-nav navbar-left" style="margin-left:19%">
-                        <li class="nav-item"><button  class="btn btn-primary"  id="sty">2D</button></li>
-                        <li class="nav-item"><button  class="btn btn-primary" id="for_3d">3D</button></li>
-                      </ul>
-                      </div>
-                    </div>
-                    </nav>
-                  <div id="D3" class="sidenav btn-group1 text-center">
-                    <button  class="button">B1</button>
-                    <button  class="button">B2</button>
-                    <button  class="button">B3</button>
-                    <button  class="button">B4</button>
-                   
-          </div>
-                  <div id="D2" class="sidenav btn-group1 text-center">
-                   <button id="can" class="button">b1</button>
-                    <button id="car" class="button">b2</button>
-                    <button  class="button">b3</button>
-                    <button   class="button ">b4</button>
-                   
-          </div>
-         
-               
-          
-               
-                <canvas  class="main" id="canvas" height="500" width="800" >
-                 </canvas>
-                
-                <div class="log" id="debugDiv"></div>
-                </div>  
-                
-                
-                  <div class="navbar navbar-default navbar-static-bottom" id="b4">
-                     <div class="container">
-                        <h>Footer Area<h>
-                          </div>
-                          </div>
-
+  <div class="mainFrame" style="background:skyblue" >
+    <nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-light navbar-static-top">
+      <div class="container-fluid "style="background:royalblue">
+        <a class="navbar-brand" href="#">Project</a>
+        <button type="button" class="navbar-toggler"
+          data-toggle="collapse" data-target=".navbar-collapse"
+          >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse"> 
+          <ul class="nav navbar-nav navbar-left" style="margin-left:19%">
+             <li class="nav-item"><button  class="btn btn-primary"  id="for_2d">2D</button></li>
+              <li class="nav-item"><button  class="btn btn-primary" id="for_3d">3D</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="D3" class="sidenav btn-group1 text-center">
+      <button  class="button">B1</button>
+      <button  class="button">B2</button>
+      <button  class="button">B3</button>
+      <button  class="button">B4</button>
+    </div>
+    <div id="D2" class="sidenav btn-group1 text-center">
+      <button id="exp1" class="button">b1</button>
+      <button id="exp2" class="button">b2</button>
+      <button id="exp3" class="button">b3</button>
+      <button   class="button ">b4</button>
+    </div>
+    <canvas  class="main" id="canvas" height="500" width="800" >
+    </canvas>
+    <div class="log" id="debugDiv"></div>
+    </div>  
+    <div class="navbar navbar-default navbar-static-bottom" id="footer">
+      <div class="container">
+      <h>Footer Area<h>
+      </div>
+  </div>
 </body>
 <head>
+  <script src="js/exp3.js"></script>
+  <script src="./index.js"></script>
   <script src="js/exp1.js"></script>
-    <script src="./index.js"></script>
   <script src="js/exp2.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles/index.css">
-    <img src="images/car.png" id="my-img">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
+  <img src="images/car.png" id="my-img">
 </head>
 </html>

@@ -21,30 +21,29 @@ class MyCircle extends fabric.Circle {
 
 var canvas = new fabric.Canvas('canvas');
 
-$('#can').click(function() {
-  canvas.setHeight(500);
-  canvas.setWidth(800);
+$('#exp1').click(function() {
   canvas.clear();
-  var obj=new MyCircle();
-  canvas.add(obj);
-  animate(obj);
+  console.log("starting exp1...");
+  var circle=new MyCircle();
+  canvas.add(circle);
+  animate(circle);
 });
 
-function animate(obj) {
-  obj.left += obj.x * obj.direction[0];
-  obj.top += obj.x * obj.direction[1];
+function animate(circle) {
+  circle.left += circle.x * circle.direction[0];
+  circle.top += circle.x * circle.direction[1];
   canvas.renderAll();
-  if (obj.left <= 0) {
-   obj.direction[0] = 1;
+  if (circle.left <= 0) {
+   circle.direction[0] = 1;
   }
-  if ((obj.left + 2 * obj.radius) >= canvas.getWidth()) {
-   obj.direction[0] = -1;
+  if ((circle.left + 2 * circle.radius) >= canvas.getWidth()) {
+   circle.direction[0] = -1;
   }
-  if (obj.top <= 0) {
-   obj.direction[1] = 1;
+  if (circle.top <= 0) {
+   circle.direction[1] = 1;
   }
-  if ((obj.top + 2 * obj.radius) >= canvas.getHeight()) {
-   obj.direction[1]=-1;
+  if ((circle.top + 2 * circle.radius) >= canvas.getHeight()) {
+   circle.direction[1]=-1;
   }
-  fabric.util.requestAnimFrame(function(){animate(obj)});
+  fabric.util.requestAnimFrame(function(){animate(circle)});
 }

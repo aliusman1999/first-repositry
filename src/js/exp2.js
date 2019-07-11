@@ -3,8 +3,6 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
-
 class Car extends fabric.Image{
     constructor(imgElement){
         super(imgElement,{
@@ -20,24 +18,22 @@ class Car extends fabric.Image{
         this.breakFriction = 1;
         this.keysDown = [0,0,0,0];
         this.speed = 0;
-        this.oldRotation=0;
-        this.oldCos=0;
-        this.oldSin=0;
+        this.oldAngle=0;
+        this.Cos=0;
+        this.Sin=0;
     }
 }
 
 var canvas = new fabric.Canvas('canvas');
 
-$('#car').click(function(){
-    canvas.setHeight(500);
-    canvas.setWidth(800);
+$('#exp2').click(function(){
+    console.log("starting exp2...");
     canvas.clear();
     var imgElement = document.getElementById('my-img');
     let car=new Car(imgElement);
     canvas.add(car);
     first(car);
 });
-
 function toRadians (angle){
     return angle * (Math.PI / 180);
 }
@@ -62,8 +58,8 @@ function first(car){
     if(car.keysDown[1]){
 		// If the up key is down.
         car.speed += car.acceleration;
-        car.top -= car.speed * car.oldCos;
-        car.left += car.speed * car.oldSin;
+        car.top -= car.speed * car.Cos;
+        car.left += car.speed * car.Sin;
 		if(car.speed > car.topSpeed){
 			car.speed = car.topSpeed;
 		}
@@ -73,16 +69,16 @@ function first(car){
     	if(car.speed < 0){
 			car.speed = 0;
         }
-        car.top -= car.speed * car.oldCos;
-        car.left += car.speed * car.oldSin;
+        car.top -= car.speed * car.Cos;
+        car.left += car.speed * car.Sin;
     }
     //--------------------------------------working on angle------------------------------------------------
-    if(car.angle !== car.oldRotation){
+    if(car.angle !== car.oldAngle){
 	    // If the rotation changed, calculate new speeds.
-		car.oldCos = cosDegree(car.angle);
-		car.oldSin = sinDegree(car.angle);
+		car.Cos = cosDegree(car.angle);
+		car.Sin = sinDegree(car.angle);
     }
-    car.oldRotation = car.angle;
+    car.oldAngle = car.angle;
     if(car.left > canvas.getWidth()){
         car.left = 0;
     }
