@@ -29,16 +29,10 @@ $('#exp3').click(function(){
     var imgElement = document.getElementById('my-img');
     let car = new Car(imgElement);
     let line = new fabric.Line([0,0,0,0],{stroke:'black',hasControls:false,hasBorders:false,});
-    let circle = new fabric.Circle({
-        radius: 0,
-        startAngle: 0,
-        endAngle: Math.PI,
-        stroke: 'black',
-        fill: '',
-    });
+    
     canvas.add(line);
     canvas.add(car);
-    canvas.add(circle);
+    
     
     canvas.on('mouse:up',function(e){
         position(e);
@@ -46,7 +40,7 @@ $('#exp3').click(function(){
     function position(event){
       var xaxis = event.pointer.x;
       var yaxis = event.pointer.y;
-      mouseClick(xaxis,yaxis,car,line,circle);
+      mouseClick(xaxis,yaxis,car,line);
     }
 });
 
@@ -80,7 +74,7 @@ function cosDegree(degrees){
 
 //------------------------------when click pressed on canvas---------------------------------
 
-function mouseClick(xaxis,yaxis,car,line,circle){
+function mouseClick(xaxis,yaxis,car,line){
     line.set({
         x2: xaxis,
         y2: yaxis,
@@ -91,5 +85,43 @@ function mouseClick(xaxis,yaxis,car,line,circle){
     var base = (xaxis - car.left)/2;
     var lLength = calculation(perpendicular,base);
     var lAngle = getAngleDeg(perpendicular,base);
-    car.animate('angle',lAngle,{ onChange: canvas.renderAll.bind(canvas) })
+    if(lAngle > car.angle){
+        car.angle += 1;
+    } 
+    if (lAngle < car.angle){
+        car.angle -= 1;
+    }
+    if (Math.abs(perpendicular) > 0){
+        car.top -=  1 * car.Cos;
+        
+    }
+    if (Math.abs(base) > 0){
+        car.left += 1 * car.Sin ;
+       
+    }
+ 
+   
+    // car angle calculation car
+
+    if(car.angle !== car.oldAngle){
+        // If the rotation changed, calculate new angles.
+		car.Cos = cosDegree(car.angle);
+        car.Sin = sinDegree(car.angle);
+    }
+    car.oldAngle = car.angle;
+    if(car.left > canvas.getWidth()){
+        car.left = 0;
+    }
+	if(car.left < 0){
+        car.left = canvas.getWidth()
+    }
+	if(car.top > canvas.getHeight()){
+        car.top = 0;
+    }
+    if(car.top < 0){
+        car.top = canvas.getHeight();
+    }
+    canvas.renderAll();
+    fabric.util.requestAnimFrame(function(){mouseClick(xaxis,yaxis,car,line)});
+
 }
