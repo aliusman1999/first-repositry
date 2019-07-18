@@ -1,7 +1,9 @@
 import 'fabric/dist/fabric.js';
 import $ from 'jquery';
 import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+
+import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants';
 var canvas = new fabric.Canvas('canvas');
 const circleModule = require('/js/exp1.js');
 const carModule = require('/js/exp2.js');
@@ -17,16 +19,7 @@ if (typeof console  != "undefined")
    console.olog(message);
    $('#debugDiv').append( '<p>'+ message + '<p>' );
   };
-//for 2d menu
-$('#for_2d').click(function(){
-  $('#D3').css("width", "0");
-  $('#D2').css("width", "160px");
-});
-// for 3d menu
-$('#for_3d').click(function() {
-  $('#D2').css("width" , "0");
-  $('#D3').css("width", "160px");
-});
+
 //for circle
 $('#exp1').click(function(){
   console.log('exp1 button pressed')
