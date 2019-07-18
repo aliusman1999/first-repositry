@@ -1,5 +1,4 @@
 import 'fabric/dist/fabric.js';
-import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -10,7 +9,8 @@ class Car extends fabric.Image{
             top: 428,
             scaleX: 0.03,
             scaleY: 0.03,
-            angle: 1,
+            originX: 'center',
+            originY: 'center',
         });
         this.topSpeed = 20;
         this.acceleration = 0.15;
@@ -19,87 +19,83 @@ class Car extends fabric.Image{
         this.keysDown = [0,0,0,0];
         this.speed = 0;
         this.oldAngle=0;
-        this.Cos=0;
+        this.Cos=1;
         this.Sin=0;
+    }
+    check(canvas){
+        if(this.keysDown[1]){
+            // If the up key is down.
+            this.speed += this.acceleration;
+            this.top -= this.speed * this.Cos;
+            this.left += this.speed * this.Sin;
+            if(this.speed > this.topSpeed){
+                this.speed = this.topSpeed;
+            }
+        }
+        else{
+            this.speed -= (this.keysDown[3]) ? this.breakFriction : this.friction;
+            if(this.speed < 0){
+                this.speed = 0;
+            }
+            this.top -= this.speed * this.Cos;
+            this.left += this.speed * this.Sin;
+        }    
+        if(this.keysDown[0] && this.speed != 0 ){
+            // If the left key is pressed.
+            this.angle -= 1 
+        }
+        if(this.keysDown[2] && this.speed != 0 ){
+            // If the right key is pressed.
+            this.angle += 1 
+        }
+        if(this.angle !== this.oldAngle){
+            // If the rotation changed, calculate new speeds.
+            this.Cos = Math.round(Math.cos(this.angle * (Math.PI / 180)) *1000 )/1000;
+            this.Sin = Math.round(Math.sin(this.angle * (Math.PI / 180))*1000 )/1000;
+        }
+        this.oldAngle = this.angle;
+        if(this.left > canvas.getWidth()){
+            this.left = 0;
+        }
+        if(this.left < 0){
+            this.left = canvas.getWidth()
+        }
+        if(this.top > canvas.getHeight()){
+            this.top = 0;
+        }
+        if(this.top < 0){
+            this.top = canvas.getHeight();
+        }
+        var checkSpeed = this.speed;
     }
 }
 
-var canvas = new fabric.Canvas('canvas');
 
-$('#exp2').click(function(){
+function init(canvas){
     console.log("starting exp2...");
     canvas.clear();
     var imgElement = document.getElementById('my-img');
     let car=new Car(imgElement);
     canvas.add(car);
-    first(car);
-});
-function toRadians (angle){
-    return angle * (Math.PI / 180);
+ update(car,canvas);
 }
 
-function sinDegree(degrees){
-    return Math.round(Math.sin(toRadians(degrees))*1000 )/1000;
-}
-
-function cosDegree(degrees){
-    return Math.round(Math.cos(toRadians(degrees)) *1000 )/1000;
-}
-
-function first(car){
+function update(car,canvas){
     document.onkeydown = function(e){
-        var keyCode = e.keyCode - 37;
+        var keyCode = e.keyCode - 37; 
         car.keysDown[keyCode] = 1;
     }
     document.onkeyup = function(e){
         var keyCode = e.keyCode - 37;
         car.keysDown[keyCode] = 0;
     }
-    if(car.keysDown[1]){
-		// If the up key is down.
-        car.speed += car.acceleration;
-        car.top -= car.speed * car.Cos;
-        car.left += car.speed * car.Sin;
-		if(car.speed > car.topSpeed){
-			car.speed = car.topSpeed;
-		}
-    }
-	else{
-	    car.speed -= (car.keysDown[3]) ? car.breakFriction : car.friction;
-    	if(car.speed < 0){
-			car.speed = 0;
-        }
-        car.top -= car.speed * car.Cos;
-        car.left += car.speed * car.Sin;
-    }
-    //--------------------------------------working on angle------------------------------------------------
-    if(car.angle !== car.oldAngle){
-	    // If the rotation changed, calculate new speeds.
-		car.Cos = cosDegree(car.angle);
-		car.Sin = sinDegree(car.angle);
-    }
-    car.oldAngle = car.angle;
-    if(car.left > canvas.getWidth()){
-        car.left = 0;
-    }
-	if(car.left < 0){
-        car.left = canvas.getWidth()
-    }
-	if(car.top > canvas.getHeight()){
-        car.top = 0;
-    }
-    if(car.top < 0){
-        car.top = canvas.getHeight();
-    }
-    var checkSpeed = car.speed;
-	if(car.keysDown[0] && checkSpeed != 0){
-		// If the left key is pressed.
-		car.angle -= 1 
-    }
-	if(car.keysDown[2] && checkSpeed != 0){
-		// If the right key is pressed.
-		car.angle += 1 
-    }
+    car.check(canvas);
     canvas.renderAll();
-    fabric.util.requestAnimFrame(function(){first(car)});
+    fabric.util.requestAnimFrame(function(){ update(car,canvas)});
+}
+
+module.exports = {
+exp2: function(canvas){
+    init(canvas);
+}
 }

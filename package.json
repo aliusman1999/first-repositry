@@ -11,9 +11,12 @@
     "bootstrap": "^4.3.1",
     "fabric": "^3.2.0",
     "jquery": "^3.4.1",
+    "js": "^0.1.0",
     "popper.js": "^1.15.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "parcel": "^1.12.3"
+  },
   "keywords": [],
   "description": ""
 }
