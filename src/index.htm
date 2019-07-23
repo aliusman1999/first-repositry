@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html>
-<body>
+<html style="height: 100%;">
+<body style="height: 100%;">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light " style="background: darkslategray">
     <a class="navbar-brand" href="#">Project</a>
    
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -10,29 +10,27 @@
         </div>
   
   </nav>
-<div class="container-fluid bg-dark ">
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
+<div class="container-fluid bg-dark " style="height: 100%">
+
     <div class="row">
      
     <div class=" list-group col-lg-2" id="navbarNavAltMarkup" >
       <ul>
-        <button id="exp1" type="button" class="list-group-item bg-secondary col-lg-9 offset-4">circle</button>
-        <button id="exp2" type="button" class="list-group-item bg-secondary col-lg-9 offset-4">car</button>
-        <button id="exp3" type="button" class="list-group-item bg-secondary col-lg-9 offset-4">car interactive</button>
-        <button type="button" class="list-group-item bg-secondary col-lg-9 offset-4">B1</button>
-        <button type="button" class="list-group-item bg-secondary col-lg-9 offset-4">B2</button>
-        <button type="button" class="list-group-item bg-secondary col-lg-9 offset-4">B3</button>
-        <button type="button" class="list-group-item bg-secondary col-lg-9 offset-4">B4</button>
+        <button id="exp1" type="button" class="list-group-item bg-secondary col-lg-9 ">circle (2D)</button>
+        <button id="exp2" type="button" class="list-group-item bg-secondary col-lg-9 ">car (2D)</button>
+        <button id="exp3" type="button" class="list-group-item bg-secondary col-lg-9 ">car interactive (2D)</button>
+        <button id="cube" type="button" class="list-group-item bg-secondary col-lg-9 ">cube (3D)</button>
+        <button type="button" class="list-group-item bg-secondary col-lg-9 ">B2</button>
+        <button type="button" class="list-group-item bg-secondary col-lg-9 ">B3</button>
+        <button type="button" class="list-group-item bg-secondary col-lg-9 ">B4</button>
       </ul>
         
         </div>
-        <div class="col col-lg-6">
-            <canvas  class="main " id="canvas" height="500" width="945" style="border:2px solid black;" >
+        <div class="col col-lg-6" id="container">
+            <canvas  class="main " id="canvas" height="500" width="920" style="border:2px solid black;" >
             </canvas>
           </div>
-         <div class="log col col-lg-4" id="debugDiv" style="background: lightgrey; overflow:auto; height:500px; border: 3px solid #333">
+         <div class="log col col-lg-4" id="debugDiv" style="background: lightslategrey; overflow:auto; height:500px; border: 3px solid #333">
            <h2>Log</h2>
          </div>
         </div>
@@ -48,8 +46,8 @@
 </body>
 <head>
   <script src="./index.js"></script>
-  <link rel="stylesheet" href="styles/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="styles/index.css">
-  <img src="images/car.png" id="my-img">
+  <img src="images/car.png" id="my-img" style="display: none">
+
 </head>
 </html>

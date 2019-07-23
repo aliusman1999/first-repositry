@@ -1,13 +1,17 @@
 import 'fabric/dist/fabric.js';
+
 import $ from 'jquery';
 import 'bootstrap';
-// import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
-import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants';
+// Glober 
 var canvas = new fabric.Canvas('canvas');
+// Modules
 const circleModule = require('/js/exp1.js');
 const carModule = require('/js/exp2.js');
 const clickModule = require('/js/exp3.js');
+const cubeModule = require('/js/cube.js');
+
 // to print console data
 if (typeof console  != "undefined") 
  if (typeof console.log != 'undefined')
@@ -35,4 +39,9 @@ $('#exp3').click(function(){
   console.log('exp3 button pressed')
   clickModule.exp3(canvas);
   
+});
+// for cube
+$('#cube').click(function(){
+  console.log('cube button pressed')
+  cubeModule.cube(canvas);  
 });

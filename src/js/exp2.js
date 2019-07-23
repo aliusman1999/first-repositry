@@ -1,6 +1,4 @@
-import 'fabric/dist/fabric.js';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
+
 
 class Car extends fabric.Image{
     constructor(imgElement){
