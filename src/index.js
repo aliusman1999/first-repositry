@@ -45,3 +45,13 @@ $('#cube').click(function(){
   console.log('cube button pressed')
   cubeModule.cube(canvas);  
 });
+// for 2D
+// $('#D2').click(function(){
+//   console.log('2D button pressed')
+//   $('#container').load("/index.htm");
+// });
+// for 3D
+// $('#D3').click(function(){
+//   console.log('3D button pressed')
+//   $('#container').load("/index3d.htm");
+// });
