@@ -29,10 +29,10 @@ function scene1(canvas){
 
   // Box
   var geometry = new THREE.BoxGeometry( 2, 2, 2 );
-  var texture = new THREE.TextureLoader().load('/box.c12ab84a.png');
-  var cubeMaterial = new THREE.MeshLambertMaterial({map: texture });
-  cubeMaterial.side = THREE.DoubleSide;
-  var cube = new THREE.Mesh( geometry, cubeMaterial );
+  var texture = new THREE.MeshPhongMaterial({color: '#8AC'});
+  //var cubeMaterial = new THREE.MeshLambertMaterial({map: texture });
+  //cubeMaterial.side = THREE.DoubleSide;
+  var cube = new THREE.Mesh( geometry, texture );
   cube.receiveShadow = false;
   cube.castShadow= true;
   cube.position.y=1.2;
