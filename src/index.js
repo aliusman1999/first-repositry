@@ -43,7 +43,7 @@ $('#exp3').click(function(){
 // for cube
 $('#cube').click(function(){
   console.log('cube button pressed')
-  cubeModule.cube(canvas);  
+  cubeModule.cube();  
 });
 // for 2D
 // $('#D2').click(function(){
